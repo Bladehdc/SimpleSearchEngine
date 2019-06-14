@@ -26,10 +26,11 @@ public class SearchServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	*/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}*/
+		doPost(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -96,6 +97,7 @@ public class SearchServlet extends HttpServlet {
 		request.setAttribute("times", l2-l1);
 		request.setAttribute("result", result);
 		request.setAttribute("search", searchString);
+		request.setAttribute("totalpage", 10);
 		request.setAttribute("page", page);
 		request.getRequestDispatcher("result.jsp").forward(request, response);
 	}

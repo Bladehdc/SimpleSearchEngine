@@ -4,6 +4,7 @@
 	response.setCharacterEncoding("utf-8");
 	long times =  Long.parseLong(request.getAttribute("times").toString());
 	int totalnum =  Integer.parseInt(request.getAttribute("totalnum").toString());
+	int totalpage = Integer.parseInt(request.getAttribute("totalpage").toString());;
 	int pageid =  Integer.parseInt(request.getAttribute("page").toString());
 	String[] Allresult=(String[]) request.getAttribute("result");
 	String query=(String) request.getAttribute("search");
@@ -40,16 +41,17 @@
 		<%}%>
 		<%if(totalnum > 10){%>
 			<div class="pages">
+				<% if(pageid > 1){%><a class="asr"><span class="pc nextpage">上一页</span></a><%} %>
 				<% 
 					for(int i=0;i<10;i++){
 						if(pageid == i+1){
-							out.println("<span class=\"pc strong\">"+(i+1)+"</span>");
+							out.println("<a class=\"asr\"><span class=\"strong\">"+(i+1)+"</span></a>");
 						}else{
-							out.println("<span class=\"pc\">"+(i+1)+"</span>");
+							out.println("<a href=\"search?page="+ (i+1) +"\" class=\"asr\"><span class=\"pc\">"+(i+1)+"</span></a>");
 						}
 					}
 				%>
-				<span class="pc nextpage">下一页</span>
+				<% if(pageid < totalpage){%><a class="asr"><span class="pc nextpage">下一页</span></a><%} %>
 			</div>
 		<%} %>
 		<div class="bottom"></div>
