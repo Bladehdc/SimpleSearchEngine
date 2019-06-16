@@ -4,6 +4,7 @@
 	response.setCharacterEncoding("utf-8");
 	long times =  Long.parseLong(request.getAttribute("times").toString());
 	int totalnum =  Integer.parseInt(request.getAttribute("totalnum").toString());
+	int totalpage = Integer.parseInt(request.getAttribute("totalpage").toString());;
 	int pageid =  Integer.parseInt(request.getAttribute("page").toString());
 	String[] Allresult=(String[]) request.getAttribute("result");
 	String query=(String) request.getAttribute("search");
@@ -13,6 +14,7 @@
 		<link type="text/css" rel="stylesheet" href="/css/result.css"></link>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>搜索结果</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 		<div id="head" class="header">
@@ -20,7 +22,12 @@
 				<p class="imgs">
 				</p>
 				<form id="searchform" name="searchForm" action="search" method="post">
-					<input class="searchinput" name="searchString">
+					<input class="searchinput" id="input" autocomplete="off" name="searchString">
+					<div class="addon" id="inputblock">
+						<ul>
+							<li>123</li>
+						</ul>
+					</div>
 			 		<input type="submit" class="searchbutton">
 			 	</form>
 			</div>
@@ -40,18 +47,39 @@
 		<%}%>
 		<%if(totalnum > 10){%>
 			<div class="pages">
+				<% if(pageid > 1){%><a class="asr"><span class="pc nextpage">上一页</span></a><%} %>
 				<% 
 					for(int i=0;i<10;i++){
 						if(pageid == i+1){
-							out.println("<span class=\"pc strong\">"+(i+1)+"</span>");
+							out.println("<a class=\"asr\"><span class=\"strong\">"+(i+1)+"</span></a>");
 						}else{
-							out.println("<span class=\"pc\">"+(i+1)+"</span>");
+							out.println("<a href=\"search?page="+ (i+1) +"\" class=\"asr\"><span class=\"pc\">"+(i+1)+"</span></a>");
 						}
 					}
 				%>
-				<span class="pc nextpage">下一页</span>
+				<% if(pageid < totalpage){%><a class="asr"><span class="pc nextpage">下一页</span></a><%} %>
 			</div>
 		<%} %>
 		<div class="bottom"></div>
+		<script>
+			var t = document.getElementById("inputblock");
+			document.getElementById("input").addEventListener("input",function(e){
+				$.ajax({
+					type: 'post',
+					url: 'search',
+					contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+					data: "type=s",
+					success: function (data) {
+						console.log(data);
+						t.style.display = "block";
+			        }, error: function (data) {
+			        	console.log("补全失败！");
+			    	}
+			    })
+			})
+			document.getElementById("input").addEventListener("click",function(e){
+				t.style.display = "none";
+			})
+		</script>
 	</body>
 </html>
