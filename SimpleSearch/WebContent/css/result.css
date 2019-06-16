@@ -1,0 +1,152 @@
+body{
+	margin: 0;
+	width: 100%;
+	position: absolute;
+}
+#head{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 55px;
+	position: fixed;
+	box-shadow: 0 0 5px #888;
+	z-index: 301;
+	background: #fff;
+	border-bottom: 1px solid #ebebeb;
+}
+.mysearch{
+	position: relative;
+	display: inline-block;
+	width: 50%;
+	height: 55px;
+}
+.searchinput{
+	margin-top: 1%;
+	width: 70.2%;
+	height: 41px;
+}
+.searchbutton{
+	margin-top: 1%;
+	margin-right: 2%;
+	width: 12%;
+	float:right;
+	background: #3385ff;
+	top: 0;
+	right: -5px;
+	z-index: 10;
+	height: 41px;
+	font-size: 14px;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.imgs{
+	margin-top: 1.3%;
+	margin-left: 0.5%;
+	float:left;
+	width:14%;
+	height: 40px;
+	background-image:url(/image/212.png);
+	background-size: 101px 33px;
+	background-repeat:no-repeat;
+}
+.showresult{
+	width: 50%;
+	padding-top:55px;
+	margin-left: 7%;
+	background:#fff;
+	font-size: 12px;
+	color: #999;
+}
+.t{
+	margin-top:0;
+	font-weight: 400;
+	font-size: medium;
+	margin-bottom: 1px;
+}
+.result{
+	margin-left: 7%;
+	width: 538px;
+	font-size: 13px;
+	line-height: 1.54;
+	word-wrap: break-word;
+	word-break: break-word;
+}
+em{
+	font-style: normal;
+	color: #c00;
+}
+.showurl{
+	color: green;
+	font-size: 13px;
+}
+.sorry{
+	margin-left: 7%;
+	font-size: 16px;
+}
+.ablock{
+	font-size: 13px;
+}
+.pages{
+	margin-top: 30px;
+	margin-left: 7%;
+	width: 538px;
+	height: 50px;
+	white-space: nowrap;
+	text-align: center;
+    line-height: 34px;
+}
+.bottom{
+	margin-top: 30px;
+	width: 100%;
+	height: 42px;
+	background: #f5f6f5;
+}
+.asr{
+	text-align: center;
+    line-height: 34px;
+}
+.pc{
+	border: 1px solid #e1e2e3;
+	margin-top:5px;
+	margin-left:1px;
+	width: 34px;
+	height: 34px;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align:middle;
+}
+a:hover .pc {
+    background: #f2f8ff;
+    border: 1px solid #38f;
+}
+.nextpage{
+	width: 100px;
+}
+.strong{
+	border: 0;
+	width: 34px;
+	height: 34px;
+	display: inline-block;
+}
+.addon{
+	display:none;
+	position: absolute;
+	margin-left:14%;
+	font-size: 14px;
+	z-index: 1;
+	width: 538px;
+	background: #fff;
+	border: 1px solid #ccc;
+}
+ul,li{
+	list-style-type: none;
+	padding-left: 0px;
+}
+.addon li:hover, .addon li.selected {
+    background: #ccc;
+}
+.addon li{
+	text-indent: 10px;
+}

@@ -50,6 +50,7 @@ public class SearchServlet extends HttpServlet {
 		    out.print("请正常打开此页"); 
 		    return;
 		}
+		
 		// 对查询和翻页动作的反应
 		long l1 = System.currentTimeMillis();
 		String searchString=(String)request.getParameter("searchString");

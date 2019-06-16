@@ -4,7 +4,7 @@
 	response.setCharacterEncoding("utf-8");
 	long times =  Long.parseLong(request.getAttribute("times").toString());
 	int totalnum =  Integer.parseInt(request.getAttribute("totalnum").toString());
-	int totalpage = 10;//Integer.parseInt(request.getAttribute("totalpage").toString());
+	int totalpage = Integer.parseInt(request.getAttribute("totalpage").toString());;
 	int pageid =  Integer.parseInt(request.getAttribute("page").toString());
 	String[] Allresult=(String[]) request.getAttribute("result");
 	String query=(String) request.getAttribute("search");
@@ -47,7 +47,9 @@
 		<%}%>
 		<%if(totalnum > 10){%>
 			<div class="pages">
-				<% if(pageid > 1){%><a class="asr"><span class="pc nextpage">上一页</span></a><%} %>
+				<% if(pageid > 1){
+					out.println("<a href=\"search?page="+(pageid-1)+"\" class=\"asr\"><span class=\"pc nextpage\">上一页</span></a>");
+				} %>
 				<% 
 					for(int i=0;i<10;i++){
 						if(pageid == i+1){
@@ -57,9 +59,31 @@
 						}
 					}
 				%>
-				<% if(pageid < totalpage){%><a class="asr"><span class="pc nextpage">下一页</span></a><%} %>
+				<% if(pageid < totalpage){
+					out.println("<a href=\"search?page="+(pageid+1)+"\"class=\"asr\"><span class=\"pc nextpage\">下一页</span></a>");
+				}%>
 			</div>
 		<%} %>
 		<div class="bottom"></div>
+		<script>
+			var t = document.getElementById("inputblock");
+			document.getElementById("input").addEventListener("input",function(e){
+				$.ajax({
+					type: 'post',
+					url: 'search',
+					contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+					data: "type=s",
+					success: function (data) {
+						console.log(data);
+						t.style.display = "block";
+			        }, error: function (data) {
+			        	console.log("补全失败！");
+			    	}
+			    })
+			})
+			document.getElementById("input").addEventListener("click",function(e){
+				t.style.display = "none";
+			})
+		</script>
 	</body>
 </html>

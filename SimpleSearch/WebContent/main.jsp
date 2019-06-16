@@ -31,5 +31,14 @@
 				假的搜索引擎。
 			</div>
 		</div>
+		<script>
+			var t = document.getElementById("adlist");
+			document.getElementById("inputblock").addEventListener("input",function(e){
+				t.style.display = "block";
+			})
+			document.getElementById("inputblock").addEventListener("click",function(e){
+				t.style.display = "none";
+			})
+		</script>
 	</body>
 </html>
