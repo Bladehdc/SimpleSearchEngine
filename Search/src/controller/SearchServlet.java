@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -8,14 +9,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import service.SearchAssociate;
+import service.SearchEngine;
 /**
  * Servlet implementation class SearchServlet
  */
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private SearchAssociate sa = new SearchAssociate();
+    private SearchEngine se = new SearchEngine();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -40,9 +43,19 @@ public class SearchServlet extends HttpServlet {
 		// doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		// 预备工作
 		
-		// 查询开始
+		// 输入联想
+		String addon = (String)request.getParameter("type");
+		System.out.println(addon);
+		if(addon!=null) {
+			request.setAttribute("success", 121);
+			PrintStream out = new PrintStream(response.getOutputStream());  
+		    response.setContentType("text/html;charSet=utf-8");  
+		    out.print("请正常打开此页"); 
+		    return;
+		}
+		
+		// 对查询和翻页动作的反应
 		long l1 = System.currentTimeMillis();
 		String searchString=(String)request.getParameter("searchString");
 		String pagestr = request.getParameter("page");

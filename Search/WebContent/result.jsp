@@ -14,6 +14,7 @@
 		<link type="text/css" rel="stylesheet" href="/css/result.css"></link>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>搜索结果</title>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 		<div id="head" class="header">
@@ -21,7 +22,12 @@
 				<p class="imgs">
 				</p>
 				<form id="searchform" name="searchForm" action="search" method="post">
-					<input class="searchinput" name="searchString">
+					<input class="searchinput" id="input" autocomplete="off" name="searchString">
+					<div class="addon" id="inputblock">
+						<ul>
+							<li>123</li>
+						</ul>
+					</div>
 			 		<input type="submit" class="searchbutton">
 			 	</form>
 			</div>
@@ -55,5 +61,25 @@
 			</div>
 		<%} %>
 		<div class="bottom"></div>
+		<script>
+			var t = document.getElementById("inputblock");
+			document.getElementById("input").addEventListener("input",function(e){
+				$.ajax({
+					type: 'post',
+					url: 'search',
+					contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+					data: "type=s",
+					success: function (data) {
+						console.log(data);
+						t.style.display = "block";
+			        }, error: function (data) {
+			        	console.log("补全失败！");
+			    	}
+			    })
+			})
+			document.getElementById("input").addEventListener("click",function(e){
+				t.style.display = "none";
+			})
+		</script>
 	</body>
 </html>

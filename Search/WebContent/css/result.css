@@ -130,3 +130,23 @@ a:hover .pc {
 	height: 34px;
 	display: inline-block;
 }
+.addon{
+	display:none;
+	position: absolute;
+	margin-left:14%;
+	font-size: 14px;
+	z-index: 1;
+	width: 538px;
+	background: #fff;
+	border: 1px solid #ccc;
+}
+ul,li{
+	list-style-type: none;
+	padding-left: 0px;
+}
+.addon li:hover, .addon li.selected {
+    background: #ccc;
+}
+.addon li{
+	text-indent: 10px;
+}
