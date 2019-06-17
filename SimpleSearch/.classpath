@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="lib/lucene-core-4.9.1.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-highlighter-4.9.1.jar"/>
 	<classpathentry kind="lib" path="lib/fastjson-1.2.58.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
